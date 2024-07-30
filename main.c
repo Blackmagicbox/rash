@@ -26,6 +26,8 @@ int main() {
     if (!strcmp(command, "exit")) {
       exit(0);
     }
+
+    // Compare the token extracted from the beginning of the Input  and check if it's an echo command.
     if (!strcmp(command, "echo")) {
       printf("%s\n", param);
       continue;

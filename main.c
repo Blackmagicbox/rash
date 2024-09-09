@@ -1,14 +1,13 @@
 #include <strings.h>
 #include "main.h"
 
-
 int main(int argc, char *argv[]) {
+    (void) argc, (void) argv;
+    char *buf = NULL;
+    size_t count = 0;
+    ssize_t nread;
 
     while (1) {
-        (void) argc, (void) argv;
-        char *buf = NULL;
-        size_t count = 0;
-        ssize_t nread;
 
         write(STDOUT_FILENO, "€ ", 5);
         nread = getline(&buf, &count, stdin);
@@ -19,13 +18,12 @@ int main(int argc, char *argv[]) {
         }
 
         if (strcmp(buf, "exit") != 0) {
-            printf("Exiting the shell...\n");
-            exit(0);
+            break;
         }
 
         printf("%s", buf);
-        free(buf);
-
-        return (0);
     }
+    free(buf);
+    printf("Exiting the shell...\n");
+    return (0);
 }

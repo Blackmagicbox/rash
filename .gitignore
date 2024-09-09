@@ -52,7 +52,8 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-
+# builds
+cmake-build-debug
 
 # Jetbrains
 .idea

@@ -1,4 +1,5 @@
 //#include <stdio.h>
+#include <strings.h>
 #include "main.h"
 
 
@@ -14,8 +15,13 @@ int main(int argc, char *argv[]) {
         nread = getline(&buf, &count, stdin);
 
         if (nread == -1) {
-            perror("Exiting shell");
+            perror("Shell will be terminated:");
             exit(1);
+        }
+
+        if (strcmp(buf, "exit") != 0) {
+            printf("Exiting the shell...\n");
+            exit(0);
         }
 
         printf("%s", buf);

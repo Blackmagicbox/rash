@@ -1,9 +1,11 @@
 #include <strings.h>
 #include "main.h"
 
+#define BUFFER_SIZE 1024
+
 int main(int argc, char *argv[]) {
     (void) argc, (void) argv;
-    char *buf = NULL;
+    char *buf = malloc(BUFFER_SIZE * sizeof(char));
     size_t count = 0;
     ssize_t nread;
 

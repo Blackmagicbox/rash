@@ -13,14 +13,16 @@ int main(int argc, char *argv[]) {
         write(STDOUT_FILENO, "€ ", 5);
         nread = getline(&buf, &count, stdin);
         if (nread == -1) {
-            perror("Shell will be terminated!:");
+            perror("Shell will be terminated:");
             exit(1);
         }
 
-        char *command = strtok(buf, " ");
-
-        if (strcmp(command, "exit") != 0) {
+        char *command = strtok(buf, " \t\r\n\f\v");
+        if (strcmp(command, "exit") == 0) {
             break;
+        }
+        if (strcmp(command, "echo") == 0) {
+            printf("%s",buf);
         }
 
         printf("%s", buf);

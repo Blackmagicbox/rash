@@ -10,16 +10,16 @@ int main(int argc, char *argv[]) {
     ssize_t nread;
 
     while (1) {
-
         write(STDOUT_FILENO, "€ ", 5);
         nread = getline(&buf, &count, stdin);
-
         if (nread == -1) {
-            perror("Shell will be terminated:");
+            perror("Shell will be terminated!:");
             exit(1);
         }
 
-        if (strcmp(buf, "exit") != 0) {
+        char *command = strtok(buf, " ");
+
+        if (strcmp(command, "exit") != 0) {
             break;
         }
 
